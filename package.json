@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "index:content": "npx ts-node scripts/indexContent.ts"
   },
   "dependencies": {
@@ -17,8 +17,8 @@
   "devDependencies": {
     "@types/node": "20.12.7",
     "@types/react": "18.3.3",
-    "eslint": "8.57.0",
-    "eslint-config-next": "14.2.5",
+    "eslint": "9.13.0",
+    "eslint-config-next": "15.0.3",
     "typescript": "5.4.5"
   }
 }

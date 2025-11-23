@@ -40,12 +40,10 @@ const buildRecords = async (): Promise<AlgoliaRecord[]> => {
 const run = async () => {
   const records = await buildRecords();
   await sendRecordsToAlgolia(records);
-  // eslint-disable-next-line no-console
   console.log(`Indexed ${records.length} records to Algolia index.`);
 };
 
 run().catch((error) => {
-  // eslint-disable-next-line no-console
   console.error(error);
   process.exit(1);
 });
