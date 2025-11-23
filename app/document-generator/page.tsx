@@ -29,7 +29,7 @@ type TemplateDefinition = {
 const defaultSnippets: CmsSnippets = {
   header: 'Kepada Yth. Aparat Penegak Hukum terkait, berdasarkan ketentuan RKUHAP.',
   legalBasis:
-    'Mengacu pada RKUHAP: hak pendampingan hukum (mis. Pasal 54-56), hak mengajukan penangguhan penahanan (Pasal 69-74), dan hak praperadilan atas tindakan sewenang-wenang (Pasal 95-97).',
+    'Mengacu pada RKUHAP: hak pendampingan penasihat hukum (Pasal 31-33 jo. Pasal 134), hak mengajukan penangguhan penahanan (Pasal 103), dan hak praperadilan atas tindakan sewenang-wenang (Pasal 149-153).',
   closing:
     'Demikian permohonan ini disampaikan. Mohon tindak lanjut cepat sesuai prinsip due process of law dan kepastian hukum.',
   footer:
@@ -41,8 +41,8 @@ const templates: TemplateDefinition[] = [
     id: 'bantuan-hukum',
     title: 'Permohonan Bantuan Hukum',
     summary:
-      'Meminta pendampingan penasihat hukum sejak tahap penyidikan untuk menjamin hak tersangka/terdakwa.',
-    tags: ['Hak atas penasihat hukum', 'RKUHAP', 'Pasal 54-56'],
+      'Meminta pendampingan penasihat hukum sejak penyidikan sesuai Pasal 31-33 jo. Pasal 134 RKUHAP.',
+    tags: ['Hak atas penasihat hukum', 'RKUHAP', 'Pasal 31-33', 'Pasal 134'],
     fields: [
       { name: 'pemohon', label: 'Nama Pemohon', placeholder: 'Nama lengkap pengirim permohonan' },
       { name: 'peran', label: 'Peran', placeholder: 'Keluarga tersangka / korban / pendamping' },
@@ -69,7 +69,7 @@ const templates: TemplateDefinition[] = [
         '',
         `Yang bertanda tangan di bawah ini, ${data.pemohon || '[Nama Pemohon]'} (${data.peran || 'peran pemohon'}), mengajukan pendampingan hukum bagi pihak terkait dengan perkara ${data.nomorPerkara || '...'}.`,
         '',
-        `Dasar hukum: ${snippets.legalBasis}. Hak atas penasihat hukum harus dipenuhi sejak tahap penyidikan sesuai ketentuan RKUHAP dan prinsip fair trial.`,
+        `Dasar hukum: ${snippets.legalBasis}. Hak atas penasihat hukum wajib dipenuhi sejak penyidikan sesuai Pasal 31-33 jo. Pasal 134 RKUHAP dan prinsip fair trial.`,
         '',
         `Ringkasan kronologi: ${data.kronologi || '-'}.`,
         `Permintaan spesifik: ${data.permintaan || '-'}.`,
@@ -85,8 +85,8 @@ const templates: TemplateDefinition[] = [
   {
     id: 'penangguhan-penahanan',
     title: 'Permohonan Penangguhan Penahanan',
-    summary: 'Meminta penangguhan dengan jaminan keluarga/penjamin dan rencana kepatuhan.',
-    tags: ['Penangguhan', 'RKUHAP', 'Jaminan'],
+    summary: 'Meminta penangguhan dengan jaminan dan rencana kepatuhan sesuai Pasal 103 RKUHAP.',
+    tags: ['Penangguhan', 'RKUHAP', 'Jaminan', 'Pasal 103'],
     fields: [
       { name: 'pemohon', label: 'Nama Pemohon', placeholder: 'Nama keluarga/penasihat hukum' },
       { name: 'namaTahanan', label: 'Nama Tahanan', placeholder: 'Nama lengkap yang ditahan' },
@@ -111,7 +111,7 @@ const templates: TemplateDefinition[] = [
         '',
         `Perihal: ${'Permohonan Penangguhan Penahanan'} (${data.nomorSurat || '-'})`,
         '',
-        `Saya ${data.pemohon || '[Nama Pemohon]'} mengajukan penangguhan penahanan atas nama ${data.namaTahanan || '[Nama Tahanan]'} berdasarkan hak yang diatur RKUHAP Pasal 69-74.`,
+        `Saya ${data.pemohon || '[Nama Pemohon]'} mengajukan penangguhan penahanan atas nama ${data.namaTahanan || '[Nama Tahanan]'} berdasarkan hak yang diatur Pasal 103 RKUHAP.`,
         '',
         `Alasan hukum dan keadaan: ${data.alasan || '-'}.`,
         `Penjamin: ${data.penjamin || '-'}.`,
@@ -130,8 +130,9 @@ const templates: TemplateDefinition[] = [
   {
     id: 'pra-peradilan',
     title: 'Draf Permohonan Pra-Peradilan',
-    summary: 'Memprotes penangkapan/penahanan/penggeledahan yang dianggap tidak sah dan meminta pemeriksaan hakim.',
-    tags: ['Pra-Peradilan', 'Due process', 'RKUHAP'],
+    summary:
+      'Memprotes penangkapan/penahanan/penggeledahan tidak sah dan meminta pemeriksaan hakim sesuai Pasal 149-153 RKUHAP.',
+    tags: ['Pra-Peradilan', 'Due process', 'RKUHAP', 'Pasal 149-153'],
     fields: [
       { name: 'pemohon', label: 'Nama Pemohon', placeholder: 'Nama penggugat/pemohon' },
       { name: 'kedudukan', label: 'Kedudukan Hukum', placeholder: 'Keluarga tersangka / kuasa hukum' },
@@ -163,7 +164,7 @@ const templates: TemplateDefinition[] = [
         '',
         'Perihal: Permohonan Pra-Peradilan',
         '',
-        `Saya ${data.pemohon || '[Nama Pemohon]'} selaku ${data.kedudukan || '[Kedudukan Hukum]'} mengajukan pra-peradilan atas ${data.objek || '[Objek Sengketa]'} berdasarkan hak dalam RKUHAP Pasal 95-97.`,
+        `Saya ${data.pemohon || '[Nama Pemohon]'} selaku ${data.kedudukan || '[Kedudukan Hukum]'} mengajukan pra-peradilan atas ${data.objek || '[Objek Sengketa]'} berdasarkan kewenangan hakim dalam Pasal 149-153 RKUHAP.`,
         '',
         `Uraian kejadian: ${data.timeline || '-'}.`,
         `Bukti yang diajukan: ${data.bukti || '-'}.`,
