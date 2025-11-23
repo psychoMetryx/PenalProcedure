@@ -5,6 +5,7 @@ export const STAGES_QUERY = `*[_type == "stage"]|order(order asc){
   order,
   summary,
   actions,
+  tip,
   rights[]{title, description, relatedRights}
 }`;
 
