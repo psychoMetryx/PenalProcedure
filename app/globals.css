@@ -2,6 +2,36 @@
   color-scheme: light;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: #f8fafc;
+
+  /* Design tokens: states */
+  --color-info-strong: #0b75a4;
+  --color-info-surface: #e0f2fe;
+  --color-info-border: #0ea5e9;
+
+  --color-success-strong: #166534;
+  --color-success-surface: #dcfce7;
+  --color-success-border: #16a34a;
+
+  --color-danger-strong: #b91c1c;
+  --color-danger-surface: #fef2f2;
+  --color-danger-border: #ef4444;
+
+  /* Core palette */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
+  --color-text: #0f172a;
+  --color-text-subtle: #475569;
+
+  /* Layout */
+  --grid-min-card: 260px;
+  --grid-gap: 1rem;
+  --container-max: 1180px;
+
+  /* Accessibility */
+  --focus-ring: 3px solid var(--color-info-border);
+  --focus-offset: 3px;
 }
 
 * {
@@ -10,18 +40,20 @@
 
 body {
   margin: 0;
-  background: #f8fafc;
-  color: #0f172a;
+  background: var(--color-surface-muted);
+  color: var(--color-text);
 }
 
 main.container {
-  max-width: 1180px;
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: 1rem 1.5rem 4rem;
 }
 
 a {
   color: inherit;
+  text-decoration-color: transparent;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 h1, h2, h3, h4 {
@@ -33,22 +65,43 @@ p {
   margin: 0;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  border-radius: 0.35rem;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration-color: currentColor;
+}
+
 section + section {
   margin-top: 2.25rem;
 }
 
 div.cardGrid {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--grid-gap);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  div.cardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(var(--grid-min-card), 1fr));
+  }
 }
 
 div.card {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 1rem;
   padding: 1rem;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--color-shadow);
 }
 
 .badge {
@@ -57,6 +110,19 @@ div.card {
   border-radius: 0.75rem;
   font-size: 0.85rem;
   font-weight: 700;
-  background: #e0f2fe;
-  color: #0369a1;
+  background: var(--color-info-surface);
+  color: var(--color-info-strong);
+  border: 1px solid var(--color-info-border);
+}
+
+.badge[data-tone='success'] {
+  background: var(--color-success-surface);
+  color: var(--color-success-strong);
+  border-color: var(--color-success-border);
+}
+
+.badge[data-tone='danger'] {
+  background: var(--color-danger-surface);
+  color: var(--color-danger-strong);
+  border-color: var(--color-danger-border);
 }

@@ -6,15 +6,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .brand {
   font-weight: 800;
   font-size: 1.15rem;
-  color: #0f172a;
+  color: var(--color-text);
 }
 
 .nav {
@@ -23,7 +23,7 @@
 }
 
 .nav a {
-  color: #1f2937;
+  color: var(--color-text-subtle);
   text-decoration: none;
   font-weight: 600;
   padding-bottom: 0.2rem;
@@ -31,14 +31,15 @@
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.nav a:hover {
-  color: #0f172a;
-  border-color: #0ea5e9;
+.nav a:hover,
+.nav a:focus-visible {
+  color: var(--color-text);
+  border-color: var(--color-info-border);
 }
 
 .active {
-  color: #0f172a;
-  border-bottom: 2px solid #0ea5e9;
+  color: var(--color-text);
+  border-bottom: 2px solid var(--color-info-border);
 }
 
 @media (max-width: 720px) {
