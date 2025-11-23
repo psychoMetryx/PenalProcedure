@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './LegalTooltipDictionary.module.css';
 
 type Term = {
@@ -50,9 +50,28 @@ const terms: Term[] = [
 
 export function LegalTooltipDictionary() {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const wrapperRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event: PointerEvent) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setActiveId(null);
+      }
+    };
+
+    document.addEventListener('pointerdown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('pointerdown', handleOutsideClick);
+    };
+  }, []);
+
+  const toggleActive = (termId: string) => {
+    setActiveId((current) => (current === termId ? null : termId));
+  };
 
   return (
-    <section className={styles.wrapper} aria-labelledby="kamus-hukum-heading">
+    <section ref={wrapperRef} className={styles.wrapper} aria-labelledby="kamus-hukum-heading">
       <div className={styles.header}>
         <div>
           <p className="badge" data-tone="info">
@@ -80,10 +99,12 @@ export function LegalTooltipDictionary() {
                 aria-expanded={isActive}
                 data-tone={term.tone}
                 onFocus={() => setActiveId(term.id)}
-                onBlur={() => setActiveId(null)}
-                onMouseEnter={() => setActiveId(term.id)}
-                onMouseLeave={() => setActiveId(null)}
-                onClick={() => setActiveId(isActive ? null : term.id)}
+                onPointerEnter={() => setActiveId(term.id)}
+                onTouchStart={(event) => {
+                  event.preventDefault();
+                  toggleActive(term.id);
+                }}
+                onClick={() => toggleActive(term.id)}
               >
                 {term.term}
               </button>
