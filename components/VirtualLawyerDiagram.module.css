@@ -16,22 +16,22 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.8rem;
-  color: #0ea5e9;
+  color: var(--color-info-strong);
   font-weight: 700;
   margin-bottom: 0.25rem;
 }
 
 .lead {
   max-width: 720px;
-  color: #334155;
+  color: var(--color-text-subtle);
   line-height: 1.5;
   margin-top: 0.35rem;
 }
 
 .keyHint {
-  background: #ecfeff;
-  border: 1px solid #bae6fd;
-  color: #0f172a;
+  background: var(--color-info-surface);
+  border: 1px solid var(--color-info-border);
+  color: var(--color-text);
   padding: 0.65rem 0.85rem;
   border-radius: 0.85rem;
   margin-top: 0.85rem;
@@ -42,7 +42,7 @@
   display: grid;
   gap: 0.5rem;
   background: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
   border-radius: 0.75rem;
   padding: 0.75rem 1rem;
   min-width: 240px;
@@ -52,7 +52,7 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  color: #475569;
+  color: var(--color-text-subtle);
 }
 
 .legendDot {
@@ -68,11 +68,11 @@
 }
 
 .diagram {
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 1.25rem;
   padding: 1rem;
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
+  box-shadow: var(--color-shadow);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
@@ -104,7 +104,7 @@
 .node {
   text-align: left;
   background: linear-gradient(180deg, #f8fafc 0%, #fff 80%);
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--color-border);
   border-radius: 1rem;
   padding: 0.85rem;
   cursor: pointer;
@@ -113,19 +113,19 @@
 }
 
 .node:focus-visible {
-  outline: 3px solid #0ea5e9;
-  outline-offset: 3px;
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 
 .node:hover {
-  border-color: #0ea5e9;
+  border-color: var(--color-info-border);
   box-shadow: 0 10px 24px rgba(14, 165, 233, 0.15);
   transform: translateY(-2px);
 }
 
 .active {
-  border-color: #0f172a;
-  background: #ecfeff;
+  border-color: var(--color-text);
+  background: var(--color-info-surface);
 }
 
 .recommended {
@@ -136,11 +136,11 @@
 .nodeTitle {
   font-weight: 800;
   margin-bottom: 0.35rem;
-  color: #0f172a;
+  color: var(--color-text);
 }
 
 .nodeSummary {
-  color: #475569;
+  color: var(--color-text-subtle);
   line-height: 1.4;
   margin: 0 0 0.5rem 0;
 }
@@ -165,15 +165,15 @@
 }
 
 .endChip {
-  background: #dcfce7;
-  color: #166534;
+  background: var(--color-success-surface);
+  color: var(--color-success-strong);
 }
 
 .tooltip {
   position: absolute;
   bottom: 12px;
   right: 12px;
-  background: #0f172a;
+  background: var(--color-text);
   color: white;
   padding: 0.35rem 0.55rem;
   border-radius: 0.5rem;
@@ -192,15 +192,15 @@
 }
 
 .detailPanel {
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 1.25rem;
   padding: 1.25rem;
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
 }
 
 .detailLead {
-  color: #475569;
+  color: var(--color-text-subtle);
   margin: 0.35rem 0 0.75rem;
   line-height: 1.6;
 }
@@ -215,9 +215,9 @@
 
 .accessibilityNote {
   margin-top: 1rem;
-  color: #475569;
+  color: var(--color-text-subtle);
   font-size: 0.95rem;
-  background: #f8fafc;
+  background: var(--color-surface-muted);
   border: 1px dashed #cbd5e1;
   padding: 0.75rem 0.9rem;
   border-radius: 0.75rem;
@@ -238,7 +238,7 @@
 .detailSection ol {
   margin: 0;
   padding-left: 1.25rem;
-  color: #334155;
+  color: var(--color-text-subtle);
   line-height: 1.6;
 }
 

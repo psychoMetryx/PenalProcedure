@@ -1,6 +1,6 @@
 .hero {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: 1fr;
   align-items: center;
   gap: 2rem;
   padding: 2.5rem 0;
@@ -15,14 +15,15 @@
   display: inline-flex;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: #e0f2fe;
-  color: #0369a1;
+  background: var(--color-info-surface);
+  color: var(--color-info-strong);
   font-weight: 700;
   font-size: 0.9rem;
+  border: 1px solid var(--color-info-border);
 }
 
 .lead {
-  color: #334155;
+  color: var(--color-text-subtle);
   font-size: 1.05rem;
   margin-bottom: 1rem;
   line-height: 1.6;
@@ -39,16 +40,34 @@
   text-decoration: none;
   padding: 0.85rem 1.15rem;
   border-radius: 0.9rem;
-  color: #0f172a;
+  color: var(--color-text);
   font-weight: 700;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.victim { background: linear-gradient(135deg, #fde68a, #fef9c3); }
-.suspect { background: linear-gradient(135deg, #bfdbfe, #dbeafe); }
-.witness { background: linear-gradient(135deg, #bbf7d0, #dcfce7); }
-.diagram { background: linear-gradient(135deg, #c7d2fe, #e0f2fe); }
+.ctas a:hover,
+.ctas a:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+}
+
+.victim {
+  background: linear-gradient(135deg, var(--color-danger-surface), #fff3e2);
+}
+
+.suspect {
+  background: linear-gradient(135deg, #cce7ff, var(--color-info-surface));
+}
+
+.witness {
+  background: linear-gradient(135deg, var(--color-success-surface), #f1fdf5);
+}
+
+.diagram {
+  background: linear-gradient(135deg, #c7d2fe, var(--color-info-surface));
+}
 
 .secondaryLinks {
   display: flex;
@@ -58,15 +77,21 @@
 }
 
 .secondaryLinks a {
-  color: #0ea5e9;
+  color: var(--color-info-strong);
   font-weight: 700;
   text-decoration: none;
+}
+
+.secondaryLinks a:hover,
+.secondaryLinks a:focus-visible {
+  color: var(--color-text);
+  text-decoration: underline;
 }
 
 .heroCard {
   padding: 1.5rem;
   border-radius: 1.25rem;
-  background: linear-gradient(160deg, #0ea5e9, #38bdf8);
+  background: linear-gradient(160deg, #0c7497, #38bdf8);
   color: #f8fafc;
   box-shadow: 0 20px 50px rgba(14, 165, 233, 0.25);
 }
@@ -83,7 +108,7 @@
 }
 
 .cardAction {
-  color: #0f172a;
+  color: var(--color-text);
   font-weight: 800;
   background: #f8fafc;
   padding: 0.65rem 0.9rem;
@@ -92,6 +117,17 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+}
+
+.cardAction:hover,
+.cardAction:focus-visible {
+  text-decoration: underline;
+}
+
+@media (min-width: 720px) {
+  .hero {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
 }
 
 @media (max-width: 540px) {

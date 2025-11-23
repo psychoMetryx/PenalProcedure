@@ -1,3 +1,5 @@
+import { LegalTooltipDictionary } from '../../components/LegalTooltipDictionary';
+
 const cards = [
   {
     id: 'suspect',
@@ -50,12 +52,14 @@ export default function KnowYourRightsPage() {
   return (
     <div>
       <h1>Know Your Rights</h1>
-      <p style={{ color: '#475569', maxWidth: '780px', margin: '0.5rem 0 1.25rem' }}>
+      <p style={{ color: 'var(--color-text-subtle)', maxWidth: '780px', margin: '0.5rem 0 1.25rem' }}>
         Ringkasan hak-hak utama untuk tiap peran. Gunakan sebagai referensi cepat ketika berhadapan dengan aparat penegak hukum.
       </p>
 
       <section id="emergency" style={{ marginTop: '1.5rem' }}>
-        <p className="badge">Darurat</p>
+        <p className="badge" data-tone="danger">
+          Darurat
+        </p>
         <h2>Checklist Darurat (5 langkah cepat)</h2>
         <ol style={{ marginLeft: '1.2rem', lineHeight: 1.5 }}>
           <li>Tanyakan surat perintah (tangkap/geledah/sita) dan baca isinya.</li>
@@ -84,7 +88,7 @@ export default function KnowYourRightsPage() {
 
       <section style={{ marginTop: '2rem' }}>
         <h2 id="vulnerable">Kelompok Rentan</h2>
-        <p style={{ color: '#475569', maxWidth: '760px' }}>
+        <p style={{ color: 'var(--color-text-subtle)', maxWidth: '760px' }}>
           Kelompok dengan kebutuhan khusus berhak atas perlakuan dan fasilitas berbeda untuk menjamin proses yang adil.
         </p>
         <div className="cardGrid">
@@ -95,6 +99,10 @@ export default function KnowYourRightsPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section style={{ marginTop: '2rem' }}>
+        <LegalTooltipDictionary />
       </section>
     </div>
   );
