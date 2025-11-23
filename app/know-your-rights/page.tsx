@@ -5,30 +5,66 @@ const cards = [
     id: 'suspect',
     title: 'Hak Tersangka',
     points: [
-      'Didampingi penasihat hukum sejak penyidikan dan berhak menolak pemeriksaan tanpa pendamping.',
-      'Hak untuk diam dan tidak dipaksa memberi keterangan yang memberatkan diri sendiri.',
-      'Praperadilan untuk menggugat penangkapan, penahanan, atau penghentian penyidikan.',
-      'Akses keluarga dan komunikasi untuk memberi kabar penahanan.'
+      {
+        text: 'Didampingi penasihat hukum sejak penyidikan dan berhak menolak pemeriksaan tanpa pendamping.',
+        basis: 'Pasal 134 huruf b-c'
+      },
+      {
+        text: 'Hak untuk diam dan tidak dipaksa memberi keterangan yang memberatkan diri sendiri.',
+        basis: 'Pasal 134 huruf f'
+      },
+      {
+        text: 'Praperadilan untuk menggugat penangkapan, penahanan, atau penghentian penyidikan.',
+        basis: 'Pasal 149 ayat (1)'
+      },
+      {
+        text: 'Akses keluarga dan komunikasi untuk memberi kabar penahanan.',
+        basis: 'Pasal 134 huruf m-n'
+      }
     ]
   },
   {
     id: 'victim',
     title: 'Hak Korban',
     points: [
-      'Memperoleh perlindungan, kerahasiaan identitas, dan pendampingan psikologis.',
-      'Mengajukan restitusi/kompensasi dan memantau pemenuhannya.',
-      'Menerima perkembangan perkara dan salinan putusan.',
-      'Mendorong keadilan restoratif jika sesuai syarat.'
+      {
+        text: 'Memperoleh perlindungan, kerahasiaan identitas, dan pendampingan psikologis.',
+        basis: 'Pasal 136 huruf i-j, o'
+      },
+      {
+        text: 'Mengajukan restitusi/kompensasi dan memantau pemenuhannya.',
+        basis: 'Pasal 136 huruf l, u'
+      },
+      {
+        text: 'Menerima perkembangan perkara, putusan pengadilan, dan informasi pembebasan.',
+        basis: 'Pasal 136 huruf f-h'
+      },
+      {
+        text: 'Mendorong keadilan restoratif/mediasi penal jika sesuai syarat.',
+        basis: 'Pasal 136 huruf m'
+      }
     ]
   },
   {
     id: 'witness',
     title: 'Hak Saksi & Pelapor',
     points: [
-      'Perlindungan identitas dan keamanan, termasuk relokasi jika perlu.',
-      'Biaya transport dan akomodasi ketika dipanggil hadir.',
-      'Tidak dapat digugat pidana/perdata atas kesaksian yang benar.',
-      'Dapat memberikan keterangan jarak jauh bila ada intimidasi.'
+      {
+        text: 'Perlindungan identitas, keamanan pribadi/keluarga, dan dukungan keamanan.',
+        basis: 'Pasal 135 huruf g-h, j'
+      },
+      {
+        text: 'Biaya transport dan akomodasi ketika dipanggil hadir.',
+        basis: 'Pasal 135 huruf i, k'
+      },
+      {
+        text: 'Tidak dapat digugat pidana/perdata atas kesaksian yang benar.',
+        basis: 'Pasal 135 huruf a'
+      },
+      {
+        text: 'Memberi keterangan tanpa tekanan dan boleh menolak pertanyaan yang menjerat/memberatkan diri sendiri.',
+        basis: 'Pasal 135 huruf c, e, f'
+      }
     ]
   }
 ];
@@ -36,15 +72,21 @@ const cards = [
 const vulnerable = [
   {
     title: 'Penyandang Disabilitas',
-    detail: 'Berhak juru bahasa isyarat, pendamping khusus, dan akomodasi layak selama pemeriksaan dan persidangan.'
+    detail:
+      'Pelayanan, sarana, dan akomodasi yang sesuai ragam disabilitas di setiap tingkat pemeriksaan, termasuk juru bahasa isyarat dan pendamping khusus.',
+    basis: 'Pasal 137 ayat (1)'
   },
   {
     title: 'Perempuan & Anak',
-    detail: 'Pemeriksaan ramah korban, ruang terpisah, serta petugas yang terlatih untuk kekerasan berbasis gender.'
+    detail:
+      'Bebas dari sikap/pernyataan merendahkan atau mengintimidasi, mendapat pendamping, dan pemeriksaan yang mempertimbangkan situasi serta trauma (termasuk keterangan jarak jauh).',
+    basis: 'Pasal 138 ayat (2) huruf a-d'
   },
   {
     title: 'Lansia & Orang Sakit',
-    detail: 'Hak atas pemeriksaan kesehatan berkala dan opsi penangguhan/penalihan penahanan demi kesehatan.'
+    detail:
+      'Sarana khusus sesuai kondisi fisik/psikis, pelayanan kesehatan lanjut usia, dan pertimbangan untuk tidak dijatuhi penjara bagi yang berusia di atas 75 tahun.',
+    basis: 'Pasal 139 ayat (2) huruf a-c'
   }
 ];
 
@@ -77,8 +119,13 @@ export default function KnowYourRightsPage() {
             <div id={card.id} key={card.id} className="card">
               <h3>{card.title}</h3>
               <ul style={{ paddingLeft: '1.15rem', lineHeight: 1.5 }}>
-                {card.points.map((point) => (
-                  <li key={point}>{point}</li>
+                {card.points.map(({ text, basis }) => (
+                  <li key={text}>
+                    <div>{text}</div>
+                    <div style={{ color: 'var(--color-text-subtle)', fontSize: '0.9em' }}>
+                      Basis hukum: RKUHAP {basis}
+                    </div>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -96,6 +143,9 @@ export default function KnowYourRightsPage() {
             <div key={item.title} className="card">
               <h3>{item.title}</h3>
               <p>{item.detail}</p>
+              <p style={{ color: 'var(--color-text-subtle)', fontSize: '0.9em', marginTop: '0.35rem' }}>
+                Basis hukum: RKUHAP {item.basis}
+              </p>
             </div>
           ))}
         </div>
