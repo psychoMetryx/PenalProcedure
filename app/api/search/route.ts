@@ -19,11 +19,13 @@ type AlgoliaResponse = {
   hits: AlgoliaHit[];
 };
 
-const { ALGOLIA_APP_ID, ALGOLIA_SEARCH_API_KEY, ALGOLIA_INDEX_NAME } = process.env;
-const indexName = ALGOLIA_INDEX_NAME || 'pahamkuhap-content';
+const appId = process.env.ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
+const searchApiKey = process.env.ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;
+const indexName =
+  process.env.ALGOLIA_INDEX_NAME || process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || 'pahamkuhap-content';
 
 export async function POST(request: Request) {
-  const hasAlgoliaConfig = Boolean(ALGOLIA_APP_ID && ALGOLIA_SEARCH_API_KEY);
+  const hasAlgoliaConfig = Boolean(appId && searchApiKey);
 
   if (!hasAlgoliaConfig) {
     return NextResponse.json(
@@ -49,15 +51,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ hits: [] });
   }
 
-  const endpoint = `https://${ALGOLIA_APP_ID}-dsn.algolia.net/1/indexes/${indexName}/query`;
+  const endpoint = `https://${appId}-dsn.algolia.net/1/indexes/${indexName}/query`;
 
   try {
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Algolia-API-Key': ALGOLIA_SEARCH_API_KEY!,
-        'X-Algolia-Application-Id': ALGOLIA_APP_ID
+        'X-Algolia-API-Key': searchApiKey!,
+        'X-Algolia-Application-Id': appId
       },
       body: JSON.stringify({ query, hitsPerPage: 12 })
     });
