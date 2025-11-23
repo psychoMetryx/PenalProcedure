@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Hero } from '../components/Hero';
+import { SearchSection } from '../components/SearchSection';
 
 const quickLinks = [
   {
@@ -58,6 +59,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <SearchSection />
       <section>
         <h2>Mulai dari kebutuhan Anda</h2>
         <div className="cardGrid">
