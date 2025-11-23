@@ -36,6 +36,11 @@ const quickLinks = [
     title: 'Diagram Virtual Lawyer',
     description: 'Navigasi visual hak dan langkah utama tanpa perlu chat.',
     href: '/virtual-lawyer'
+  },
+  {
+    title: 'Court Bag Evidence Checker',
+    description: 'Seret bukti seperti CCTV, rumor, atau chat untuk melihat peluang diterima.',
+    href: '/evidence-checker'
   }
 ];
 
