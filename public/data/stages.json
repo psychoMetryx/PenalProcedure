@@ -1,0 +1,98 @@
+[
+  {
+    "_id": "stage-report",
+    "title": "Laporan/Pengaduan",
+    "slug": { "current": "laporan", "_type": "slug" },
+    "order": 1,
+    "summary": "Mendaftarkan laporan ke kepolisian dan mendapatkan bukti lapor.",
+    "rights": [
+      {
+        "title": "Menerima tanda bukti lapor",
+        "description": "Pastikan nomor laporan dicatat untuk memantau perkembangan."
+      },
+      {
+        "title": "Hak didampingi saat membuat laporan",
+        "description": "Anda dapat membawa pendamping hukum atau keluarga ketika melapor."
+      }
+    ],
+    "tip": "Simpan salinan laporan dan kontak penyidik yang menangani perkara."
+  },
+  {
+    "_id": "stage-investigation",
+    "title": "Penyidikan",
+    "slug": { "current": "penyidikan", "_type": "slug" },
+    "order": 2,
+    "summary": "Pengumpulan alat bukti dan pemeriksaan saksi/tersangka.",
+    "rights": [
+      { "title": "Didampingi pengacara", "description": "Tersangka berhak didampingi sejak awal pemeriksaan." },
+      {
+        "title": "Menolak pemeriksaan tanpa surat perintah",
+        "description": "Pastikan ada surat tugas atau penangkapan yang sah sebelum pemeriksaan berlangsung."
+      }
+    ],
+    "tip": "Catat waktu penangkapan dan nama penyidik yang memeriksa."
+  },
+  {
+    "_id": "stage-prosecution",
+    "title": "Penuntutan",
+    "slug": { "current": "penuntutan", "_type": "slug" },
+    "order": 3,
+    "summary": "Berkas perkara diteliti jaksa dan diputuskan layak dituntut.",
+    "rights": [
+      {
+        "title": "Menerima pemberitahuan status berkas",
+        "description": "Para pihak berhak tahu apakah berkas dinyatakan lengkap (P-21) atau dikembalikan untuk dilengkapi."
+      },
+      {
+        "title": "Mengajukan keadilan restoratif",
+        "description": "Pada perkara tertentu, pihak dapat mengusulkan penghentian perkara melalui mekanisme keadilan restoratif."
+      }
+    ],
+    "tip": "Tanyakan batas waktu penelitian berkas dan catat nomor surat jaksa."
+  },
+  {
+    "_id": "stage-trial",
+    "title": "Persidangan",
+    "slug": { "current": "persidangan", "_type": "slug" },
+    "order": 4,
+    "summary": "Pemeriksaan perkara di pengadilan dengan menghadirkan saksi dan bukti.",
+    "rights": [
+      {
+        "title": "Sidang terbuka untuk umum",
+        "description": "Sidang harus terbuka kecuali perkara tertentu; pelanggaran dapat dicatat sebagai keberatan."
+      },
+      { "title": "Menyampaikan pembelaan", "description": "Terdakwa berhak mengajukan pledoi atau duplik secara lisan maupun tertulis." }
+    ],
+    "tip": "Siapkan dokumen dan saksi yang mendukung pembelaan sebelum jadwal sidang."
+  },
+  {
+    "_id": "stage-verdict",
+    "title": "Putusan",
+    "slug": { "current": "putusan", "_type": "slug" },
+    "order": 5,
+    "summary": "Majelis hakim memutus bebas, lepas, atau bersalah.",
+    "rights": [
+      { "title": "Menerima salinan putusan", "description": "Para pihak berhak menerima salinan resmi putusan pengadilan." },
+      { "title": "Mengajukan banding atau kasasi", "description": "Upaya hukum dapat diajukan dalam tenggat yang diatur undang-undang." }
+    ],
+    "tip": "Catat tenggat banding (7 hari sejak putusan dibacakan) agar hak tidak hilang."
+  },
+  {
+    "_id": "stage-execution",
+    "title": "Eksekusi & Remedi",
+    "slug": { "current": "eksekusi", "_type": "slug" },
+    "order": 6,
+    "summary": "Pelaksanaan putusan dan upaya hukum luar biasa.",
+    "rights": [
+      {
+        "title": "Memohon penangguhan penahanan",
+        "description": "Dapat mengajukan penangguhan atau perubahan status tahanan dengan jaminan atau alasan kesehatan."
+      },
+      {
+        "title": "Peninjauan kembali",
+        "description": "Ajukan PK jika ada novum atau kekeliruan nyata dalam putusan."
+      }
+    ],
+    "tip": "Konsultasikan dengan penasihat hukum untuk memilih upaya hukum yang tepat."
+  }
+]
