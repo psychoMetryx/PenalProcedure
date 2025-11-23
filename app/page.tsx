@@ -41,6 +41,11 @@ const quickLinks = [
     title: 'Court Bag Evidence Checker',
     description: 'Seret bukti seperti CCTV, rumor, atau chat untuk melihat peluang diterima.',
     href: '/evidence-checker'
+  },
+  {
+    title: 'Generator Surat Hukum',
+    description: 'Isi form untuk membuat surat permohonan bantuan hukum, penangguhan, atau pra-peradilan.',
+    href: '/document-generator'
   }
 ];
 
