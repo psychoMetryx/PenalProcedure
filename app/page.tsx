@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Route } from 'next';
 import { Hero } from '../components/Hero';
 import { SearchSection } from '../components/SearchSection';
 
@@ -53,7 +54,11 @@ const quickLinks = [
     description: 'Isi form untuk membuat surat permohonan bantuan hukum, penangguhan, atau pra-peradilan.',
     href: '/document-generator'
   }
-];
+] as const satisfies Array<{
+  title: string;
+  description: string;
+  href: Route;
+}>;
 
 export default function HomePage() {
   return (

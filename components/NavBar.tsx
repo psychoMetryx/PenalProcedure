@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import type { Route } from 'next';
 import styles from './NavBar.module.css';
 
 const links = [
@@ -13,7 +14,7 @@ const links = [
   { href: '/evidence-checker', label: 'Evidence Checker' },
   { href: '/document-generator', label: 'Generator Surat' },
   { href: '/comparator', label: 'RUU vs KUHAP Lama' }
-];
+] as const satisfies Array<{ href: Route; label: string }>;
 
 export function NavBar() {
   const pathname = usePathname();
