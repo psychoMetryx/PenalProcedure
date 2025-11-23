@@ -1,0 +1,32 @@
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import styles from './NavBar.module.css';
+
+const links = [
+  { href: '/', label: 'Beranda' },
+  { href: '/jalur-perkara', label: 'Jalur Perkara' },
+  { href: '/know-your-rights', label: 'Kenali Hak Anda' },
+  { href: '/comparator', label: 'RUU vs KUHAP Lama' }
+];
+
+export function NavBar() {
+  const pathname = usePathname();
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.brand}>PahamKUHAP</div>
+      <nav className={styles.nav}>
+        {links.map((link) => {
+          const active = pathname === link.href;
+          return (
+            <Link key={link.href} href={link.href} className={active ? styles.active : ''}>
+              {link.label}
+            </Link>
+          );
+        })}
+      </nav>
+    </header>
+  );
+}

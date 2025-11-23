@@ -1,0 +1,62 @@
+.container {
+  padding: 2rem 0;
+}
+
+.lead {
+  color: #475569;
+  max-width: 720px;
+  margin-bottom: 1.75rem;
+}
+
+.timeline {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.step {
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+}
+
+.stepHeader {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.badge {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: #0ea5e9;
+  color: #fff;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.step p {
+  margin: 0.25rem 0 0.5rem;
+  color: #334155;
+}
+
+.step ul {
+  margin: 0.5rem 0 0.75rem 1.25rem;
+  color: #111827;
+  line-height: 1.5;
+}
+
+.tip {
+  margin: 0;
+  font-weight: 700;
+  color: #0f172a;
+}
