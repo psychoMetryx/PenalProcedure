@@ -1,6 +1,7 @@
 import styles from './Timeline.module.css';
 
 type Step = {
+  id: string;
   title: string;
   summary: string;
   rights: string[];
@@ -9,6 +10,7 @@ type Step = {
 
 const steps: Step[] = [
   {
+    id: 'laporan',
     title: 'Laporan / Pengaduan',
     summary: 'Cara melapor ke polisi atau Kejaksaan dan memastikan laporan dicatat.',
     rights: [
@@ -19,6 +21,7 @@ const steps: Step[] = [
     tip: 'Simpan kronologi tertulis dan foto bukti sejak awal.'
   },
   {
+    id: 'penyidikan',
     title: 'Penyidikan',
     summary: 'Tahap pemeriksaan saksi, tersangka, dan pengumpulan bukti.',
     rights: [
@@ -29,6 +32,7 @@ const steps: Step[] = [
     tip: 'Gunakan hak diam (right to remain silent) sampai pengacara hadir.'
   },
   {
+    id: 'penuntutan',
     title: 'Penuntutan',
     summary: 'Jaksa menilai berkas perkara, dapat menghentikan atau lanjut ke pengadilan.',
     rights: [
@@ -39,6 +43,7 @@ const steps: Step[] = [
     tip: 'Pastikan kontak Anda ada di berkas untuk update perkara.'
   },
   {
+    id: 'persidangan',
     title: 'Persidangan',
     summary: 'Agenda sidang, pembuktian, saksi ahli, pledoi, dan tuntutan.',
     rights: [
@@ -49,6 +54,7 @@ const steps: Step[] = [
     tip: 'Catat jadwal sidang dan minta salinan resume sidang dari penasihat hukum.'
   },
   {
+    id: 'putusan',
     title: 'Putusan',
     summary: 'Hakim memutus bebas, lepas, atau pidana. Ada catatan rehabilitasi/pendampingan.',
     rights: [
@@ -59,6 +65,7 @@ const steps: Step[] = [
     tip: 'Perhatikan tenggat pengajuan upaya hukum (banding/kasasi).'
   },
   {
+    id: 'eksekusi',
     title: 'Eksekusi & Pemulihan',
     summary: 'Pelaksanaan pidana, pembinaan, dan pemulihan hak korban.',
     rights: [
@@ -79,7 +86,7 @@ export function Timeline() {
       </p>
       <div className={styles.timeline}>
         {steps.map((step, index) => (
-          <article key={step.title} className={styles.step}>
+          <article key={step.title} className={styles.step} id={step.id}>
             <div className={styles.stepHeader}>
               <span className={styles.badge}>{index + 1}</span>
               <div>

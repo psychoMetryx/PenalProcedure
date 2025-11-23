@@ -18,6 +18,11 @@ const quickLinks = [
     href: '/know-your-rights#suspect'
   },
   {
+    title: 'Cek Pasal 75/77',
+    description: 'Jawab kuis singkat untuk melihat kelayakan praperadilan dan ganti kerugian.',
+    href: '/pasal-75-77'
+  },
+  {
     title: 'Hak Saksi & Rentan',
     description: 'Perlindungan saksi, juru bahasa, akomodasi disabilitas, dan kelompok rentan.',
     href: '/know-your-rights#witness'
