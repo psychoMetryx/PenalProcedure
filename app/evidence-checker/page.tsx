@@ -74,14 +74,18 @@ export default function EvidenceCheckerPage() {
     return bag[bag.length - 1];
   }, [bag]);
 
+  const addItemToBag = (item: EvidenceItem) => {
+    setBag((prev) => [...prev, { ...item, timestamp: Date.now() }]);
+    setDragging(false);
+  };
+
   const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     const id = event.dataTransfer.getData('text/plain');
     const item = evidenceItems.find((entry) => entry.id === id);
     if (!item) return;
 
-    setBag((prev) => [...prev, { ...item, timestamp: Date.now() }]);
-    setDragging(false);
+    addItemToBag(item);
   };
 
   const handleReset = () => {
@@ -102,7 +106,7 @@ export default function EvidenceCheckerPage() {
 
       <div className={styles.layout}>
         <div>
-          <h2>Drag evidence yang Anda punya</h2>
+          <h2>Drag atau klik evidence yang Anda punya</h2>
           <div className={styles.itemsList}>
             {evidenceItems.map((item) => (
               <div
@@ -116,6 +120,13 @@ export default function EvidenceCheckerPage() {
                   setDragging(true);
                 }}
                 onDragEnd={() => setDragging(false)}
+                onClick={() => addItemToBag(item)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    addItemToBag(item);
+                  }
+                }}
               >
                 <div className={styles.metaRow}>
                   <span className={styles.evidenceType}>{item.type}</span>
@@ -144,8 +155,8 @@ export default function EvidenceCheckerPage() {
               <span className="badge">Drop di sini</span>
             </div>
             <p className={styles.dropHint}>
-              Lepaskan bukti apa pun untuk melihat status penerimaan dan dasar pasal. Tarik lebih dari satu item untuk
-              membandingkan.
+              Lepaskan atau klik kartu bukti apa pun untuk melihat status penerimaan dan dasar pasal. Tarik lebih dari satu
+              item untuk membandingkan.
             </p>
 
             {latest ? (
