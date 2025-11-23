@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import type { Route } from 'next';
 import { FormEvent, useMemo, useState } from 'react';
 import styles from './SearchSection.module.css';
 
@@ -38,26 +39,26 @@ const destinationLabels: Record<ContentType, string> = {
   template: 'Generator Surat'
 };
 
-function buildDestination(hit: SearchHit) {
+function buildDestination(hit: SearchHit): { href: Route; label: string } {
   if (hit.contentType === 'stage') {
     const anchor = hit.slug?.current || hit.objectID;
     const normalizedAnchor = anchor ? encodeURIComponent(anchor) : '';
     return {
-      href: normalizedAnchor ? `/jalur-perkara#${normalizedAnchor}` : '/jalur-perkara',
+      href: (normalizedAnchor ? `/jalur-perkara#${normalizedAnchor}` : '/jalur-perkara') as Route,
       label: destinationLabels.stage
     };
   }
 
   if (hit.contentType === 'right') {
     const anchor = hit.audience ? `#${hit.audience}` : '';
-    return { href: `/know-your-rights${anchor}`, label: destinationLabels.right };
+    return { href: `/know-your-rights${anchor}` as Route, label: destinationLabels.right };
   }
 
   if (hit.contentType === 'glossary') {
-    return { href: '/know-your-rights#kamus-hukum-heading', label: destinationLabels.glossary };
+    return { href: '/know-your-rights#kamus-hukum-heading' as Route, label: destinationLabels.glossary };
   }
 
-  return { href: '/document-generator', label: destinationLabels.template };
+  return { href: '/document-generator' as Route, label: destinationLabels.template };
 }
 
 function trimText(text?: string, limit = 210) {

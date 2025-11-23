@@ -20,8 +20,10 @@ const initialState: QuizState = {
   victimForgives: 'unsure'
 };
 
+const baseBorder = '#e2e8f0';
+
 const optionStyle: CSSProperties = {
-  border: '1px solid #e2e8f0',
+  border: `1px solid ${baseBorder}`,
   borderRadius: '0.75rem',
   padding: '0.75rem 0.9rem',
   background: '#fff',
@@ -32,7 +34,6 @@ const optionStyle: CSSProperties = {
 
 export default function RestorativeJusticeQuizPage() {
   const [answers, setAnswers] = useState<QuizState>(initialState);
-  const baseBorder = optionStyle.border ?? '#e2e8f0';
 
   const evaluation = useMemo(() => {
     if (answers.excludedOffense === 'yes') {

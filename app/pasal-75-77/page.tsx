@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
+import type { Route } from 'next';
 import { useMemo, useState } from 'react';
 
 type Answer = 'yes' | 'no' | 'unsure';
@@ -23,8 +24,10 @@ const initialState: QuestionnaireState = {
   counselDenied: 'no'
 };
 
+const baseBorder = '#e2e8f0';
+
 const optionStyle: CSSProperties = {
-  border: '1px solid #e2e8f0',
+  border: `1px solid ${baseBorder}`,
   borderRadius: '0.75rem',
   padding: '0.75rem 0.9rem',
   background: '#fff',
@@ -34,7 +37,6 @@ const optionStyle: CSSProperties = {
 };
 
 export default function Pasal7577CheckPage() {
-  const baseBorder = optionStyle.border ?? '#e2e8f0';
   const [answers, setAnswers] = useState<QuestionnaireState>(initialState);
 
   const findings = useMemo(() => {
@@ -301,10 +303,18 @@ export default function Pasal7577CheckPage() {
             </p>
           )}
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
-            <Link href="/templates/pasal-77-praperadilan-template.txt" target="_blank" style={{ color: '#0ea5e9' }}>
+            <Link
+              href={'/templates/pasal-77-praperadilan-template.txt' as Route}
+              target="_blank"
+              style={{ color: '#0ea5e9' }}
+            >
               Buka template permohonan praperadilan (sesuaikan ke Pasal 149-153 RKUHAP) →
             </Link>
-            <Link href="/templates/pasal-75-ganti-kerugian-template.txt" target="_blank" style={{ color: '#0ea5e9' }}>
+            <Link
+              href={'/templates/pasal-75-ganti-kerugian-template.txt' as Route}
+              target="_blank"
+              style={{ color: '#0ea5e9' }}
+            >
               Buka template ganti kerugian & rehabilitasi (sesuaikan ke RKUHAP) →
             </Link>
             <button

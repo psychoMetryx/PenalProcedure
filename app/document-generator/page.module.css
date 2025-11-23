@@ -66,9 +66,9 @@
   color: #475569;
 }
 
-input,
-textarea,
-select {
+.field input,
+.field textarea,
+.field select {
   border: 1px solid #e2e8f0;
   border-radius: 0.75rem;
   padding: 0.75rem;
@@ -77,7 +77,7 @@ select {
   background: #f8fafc;
 }
 
-textarea {
+.field textarea {
   min-height: 100px;
 }
 
