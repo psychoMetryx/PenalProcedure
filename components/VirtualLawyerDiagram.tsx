@@ -212,7 +212,6 @@ export function VirtualLawyerDiagram() {
                 return (
                   <button
                     key={node.id}
-                    role="listitem"
                     className={`${styles.node} ${selectedId === node.id ? styles.active : ''} ${
                       isRecommended ? styles.recommended : ''
                     }`}
@@ -224,7 +223,6 @@ export function VirtualLawyerDiagram() {
                         setSelectedId(node.id);
                       }
                     }}
-                    aria-pressed={selectedId === node.id}
                     aria-current={selectedId === node.id}
                     aria-describedby={`${nodeHintId} diagram-instructions`}
                     aria-controls="vl-detail-panel"
