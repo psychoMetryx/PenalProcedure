@@ -197,9 +197,9 @@ export function VirtualLawyerDiagram() {
         </div>
       </div>
 
-      <div className={styles.diagram} role="list" aria-label="Diagram jalur Virtual Lawyer">
+      <div className={styles.diagram} role="listbox" aria-label="Diagram jalur Virtual Lawyer">
         {stages.map((stage) => (
-          <div key={stage} className={styles.stageColumn} aria-label={`Tahap ${stage}`}>
+          <div key={stage} className={styles.stageColumn} role="group" aria-label={`Tahap ${stage}`}>
             <div className={styles.stageHeader}>{stage}</div>
             <div className={styles.columnNodes}>
               {nodesByStage[stage].map((node) => {
@@ -211,6 +211,7 @@ export function VirtualLawyerDiagram() {
 
                 return (
                   <button
+                    id={`${node.id}-option`}
                     key={node.id}
                     className={`${styles.node} ${selectedId === node.id ? styles.active : ''} ${
                       isRecommended ? styles.recommended : ''
@@ -223,7 +224,8 @@ export function VirtualLawyerDiagram() {
                         setSelectedId(node.id);
                       }
                     }}
-                    aria-current={selectedId === node.id}
+                    role="option"
+                    aria-selected={selectedId === node.id}
                     aria-describedby={`${nodeHintId} diagram-instructions`}
                     aria-controls="vl-detail-panel"
                     aria-keyshortcuts="Enter Space"
