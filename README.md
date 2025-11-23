@@ -1,8 +1,8 @@
-# PahamHukum
+# PahamKUHAP
 
 This is a fantastic project idea. The legal system in Indonesia is often viewed as intimidating and complex. A website that breaks down the **RUU KUHAP (The New Criminal Procedure Code Draft)** and the existing system into digestible, interactive parts would be a massive public service.
 
-Here is a comprehensive blueprint for building **"PahamHukum"** (a placeholder name), designed to be citizen-centric, interactive, and legally accurate based on the document you provided.
+Here is a comprehensive blueprint for building **"PahamKUHAP"** (a placeholder name), designed to be citizen-centric, interactive, and legally accurate based on the document you provided.
 
 ---
 
