@@ -11,6 +11,7 @@ const links = [
   { href: '/pasal-75-77', label: 'Cek Pasal 75/77' },
   { href: '/virtual-lawyer', label: 'Virtual Lawyer' },
   { href: '/evidence-checker', label: 'Evidence Checker' },
+  { href: '/document-generator', label: 'Generator Surat' },
   { href: '/comparator', label: 'RUU vs KUHAP Lama' }
 ];
 
