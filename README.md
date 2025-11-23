@@ -49,11 +49,10 @@ A slider tool where users can see "How it was before" vs. "How it is in the New 
 
 ### **3. Interactive Modules (The "Cool" Features)**
 
-#### **1. "The Virtual Lawyer" (AI Chatbot)**
-*   **Function:** Users ask questions in everyday language.
-*   **Data Source:** The PDF you uploaded + current regulations.
-*   **Example Query:** "Polisi minta password HP saya, boleh gak?"
-*   **Answer:** "Under the new RUU (Pasal 105 & 228), police can seize electronic evidence, but they usually need a warrant from the court unless it's urgent. You have the right to ask for their warrant (Surat Izin Penyitaan)."
+#### **1. "The Virtual Lawyer" (Interactive Diagram)**
+*   **Function:** A clickable pathway diagram that guides users through common legal scenarios step by step.
+*   **Flow:** Users tap through decision nodes (e.g., "Police request phone password" → "Do they have a warrant?" → "If yes: show obligations" / "If no: explain rights and how to refuse politely" → "Next steps: file complaint or request counsel").
+*   **Outcome:** Instead of free-form chat, every node links to clearly labeled rights, required documents, and available remedies, so users can navigate without legal jargon.
 
 #### **2. "Eligible for Restorative Justice?" Calculator**
 *   **Logic:** A simple quiz based on **Pasal 75**.
