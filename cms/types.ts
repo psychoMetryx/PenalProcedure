@@ -22,13 +22,14 @@ export type Stage = {
   summary?: string;
   actions?: string[];
   rights?: StageRight[];
+  tip?: string;
 };
 
 export type Right = {
   _id?: string;
   title: string;
   slug?: Slug;
-  audience: 'suspect' | 'victim' | 'witness' | 'general';
+  audience: 'suspect' | 'victim' | 'witness' | 'general' | 'vulnerable';
   description: string;
   sources?: string[];
   stageReferences?: Reference[];

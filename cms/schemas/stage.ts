@@ -10,6 +10,7 @@ export const stageSchema: SchemaDefinition = {
     { name: 'order', title: 'Order', type: 'number' },
     { name: 'summary', title: 'Summary', type: 'text' },
     { name: 'actions', title: 'Immediate Actions', type: 'array', of: [{ type: 'string' }] },
+    { name: 'tip', title: 'Practical Tip', type: 'text' },
     {
       name: 'rights',
       title: 'Key Rights',

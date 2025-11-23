@@ -16,7 +16,8 @@ export const rightSchema: SchemaDefinition = {
           { title: 'Suspect', value: 'suspect' },
           { title: 'Victim', value: 'victim' },
           { title: 'Witness', value: 'witness' },
-          { title: 'General', value: 'general' }
+          { title: 'General', value: 'general' },
+          { title: 'Vulnerable Group', value: 'vulnerable' }
         ]
       }
     },
