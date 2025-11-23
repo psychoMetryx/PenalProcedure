@@ -53,3 +53,14 @@ export type DocumentTemplate = {
 };
 
 export type SearchableContent = Stage | Right | GlossaryTerm | DocumentTemplate;
+
+export type EvidenceItem = {
+  id: string;
+  title: string;
+  type: string;
+  accepted: boolean;
+  basis: string;
+  detail: string;
+  pasal: string;
+  citationUrl: string;
+};

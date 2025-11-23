@@ -35,3 +35,15 @@ export const TEMPLATES_QUERY = `*[_type == "documentTemplate"]{
   description,
   body
 }`;
+
+export const EVIDENCE_ITEMS_QUERY = `*[_type == "evidenceItem"]|order(_createdAt asc){
+  _id,
+  "id": coalesce(id, _id),
+  title,
+  type,
+  accepted,
+  basis,
+  detail,
+  pasal,
+  citationUrl
+}`;
