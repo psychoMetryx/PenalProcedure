@@ -1,73 +1,26 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { loadEvidenceItems } from '../../cms/evidence';
+import { ensureEvidenceHasCitation } from '../../cms/legalConstants';
+import { EvidenceItem } from '../../cms/types';
 import styles from './EvidenceChecker.module.css';
-
-type EvidenceItem = {
-  id: string;
-  title: string;
-  type: string;
-  accepted: boolean;
-  basis: string;
-  detail: string;
-};
 
 type DropRecord = EvidenceItem & { timestamp: number };
 
-const evidenceItems: EvidenceItem[] = [
-  {
-    id: 'rumor',
-    title: 'Rumor dari teman',
-    type: 'Testimoni tidak langsung',
-    accepted: false,
-    basis: 'Kesaksian harus berdasarkan pengalaman langsung, rumor dikategorikan sebagai hearsay.',
-    detail: 'Pengadilan hanya menerima keterangan saksi yang melihat, mendengar, dan mengalami sendiri peristiwa pidana.'
-  },
-  {
-    id: 'cctv',
-    title: 'Rekaman CCTV',
-    type: 'Bukti elektronik',
-    accepted: true,
-    basis: 'Pasal elektronik RKUHAP menegaskan rekaman sebagai dokumen sah setara surat.',
-    detail: 'Rekaman kamera yang menunjukkan kejadian langsung bisa menguatkan kronologi dan identitas pelaku.'
-  },
-  {
-    id: 'whatsapp',
-    title: 'Chat WhatsApp',
-    type: 'Dokumen elektronik',
-    accepted: true,
-    basis: 'RKUHAP memasukkan dokumen elektronik sebagai alat bukti yang dapat dipertanggungjawabkan.',
-    detail: 'Percakapan digital yang utuh (dengan metadata) dapat menunjukkan niat, perintah, atau ancaman.'
-  },
-  {
-    id: 'screenshot',
-    title: 'Screenshot tidak utuh',
-    type: 'Dokumen elektronik',
-    accepted: false,
-    basis: 'Tangkapan layar parsial sulit diverifikasi keasliannya dan rawan manipulasi.',
-    detail: 'Bukti elektronik wajib menunjukkan konteks lengkap dan rantai keaslian untuk diterima pengadilan.'
-  },
-  {
-    id: 'surat',
-    title: 'Surat keterangan resmi',
-    type: 'Surat/akta',
-    accepted: true,
-    basis: 'Dokumen resmi yang ditandatangani pejabat berwenang memenuhi kategori surat dalam RKUHAP.',
-    detail: 'Surat keterangan, visum et repertum, atau berita acara penyitaan termasuk alat bukti surat.'
-  },
-  {
-    id: 'rekaman-telepon',
-    title: 'Rekaman telepon pribadi',
-    type: 'Bukti elektronik',
-    accepted: false,
-    basis: 'Rekaman tanpa persetujuan dan tanpa penetapan hakim berisiko melanggar privasi dan dikesampingkan.',
-    detail: 'Pengumpulan alat bukti elektronik tetap harus memperhatikan legalitas penyadapan dalam RKUHAP.'
-  }
-];
-
 export default function EvidenceCheckerPage() {
+  const [items, setItems] = useState<EvidenceItem[]>([]);
   const [dragging, setDragging] = useState(false);
   const [bag, setBag] = useState<DropRecord[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadEvidenceItems()
+      .then((loaded) => setItems(loaded))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const validatedItems = useMemo(() => ensureEvidenceHasCitation(items), [items]);
 
   const latest = useMemo(() => {
     if (!bag.length) return null;
@@ -75,6 +28,7 @@ export default function EvidenceCheckerPage() {
   }, [bag]);
 
   const addItemToBag = (item: EvidenceItem) => {
+    if (!item.pasal || !item.citationUrl) return;
     setBag((prev) => [...prev, { ...item, timestamp: Date.now() }]);
     setDragging(false);
   };
@@ -82,7 +36,7 @@ export default function EvidenceCheckerPage() {
   const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     const id = event.dataTransfer.getData('text/plain');
-    const item = evidenceItems.find((entry) => entry.id === id);
+    const item = validatedItems.find((entry) => entry.id === id);
     if (!item) return;
 
     addItemToBag(item);
@@ -108,7 +62,11 @@ export default function EvidenceCheckerPage() {
         <div>
           <h2>Drag atau klik evidence yang Anda punya</h2>
           <div className={styles.itemsList}>
-            {evidenceItems.map((item) => (
+            {loading && <p className={styles.helperText}>Memuat dasar pasal dari RKUHAP...</p>}
+            {!loading && !validatedItems.length && (
+              <p className={styles.helperText}>Data evidence belum tersedia karena tidak ada kutipan pasal yang valid.</p>
+            )}
+            {validatedItems.map((item) => (
               <div
                 key={item.id}
                 draggable
@@ -132,6 +90,12 @@ export default function EvidenceCheckerPage() {
                   <span className={styles.evidenceType}>{item.type}</span>
                   <span aria-hidden>•</span>
                   <span>{item.accepted ? 'Cenderung diterima' : 'Berpotensi ditolak'}</span>
+                </div>
+                <div className={styles.pasalRow}>
+                  <span className={styles.pasalTag}>{item.pasal}</span>
+                  <a className={styles.citationLink} href={item.citationUrl} target="_blank" rel="noreferrer">
+                    Buka teks RKUHAP
+                  </a>
                 </div>
                 <h3>{item.title}</h3>
                 <p style={{ color: '#475569', marginTop: '0.35rem' }}>{item.detail}</p>
@@ -168,6 +132,12 @@ export default function EvidenceCheckerPage() {
                   {latest.accepted ? '✔️ Diterima (RKUHAP)' : '✖️ Ditolak (RKUHAP)'}
                 </div>
                 <h3 style={{ marginTop: '0.35rem' }}>{latest.title}</h3>
+                <div className={styles.pasalRow}>
+                  <span className={styles.pasalTag}>{latest.pasal}</span>
+                  <a className={styles.citationLink} href={latest.citationUrl} target="_blank" rel="noreferrer">
+                    Lihat teks pasal
+                  </a>
+                </div>
                 <p className={styles.basis}>{latest.accepted ? 'Alasan diterima' : 'Alasan ditolak'}</p>
                 <p className={styles.basisDetail}>{latest.basis}</p>
                 <p style={{ color: '#475569', marginTop: '0.3rem' }}>{latest.detail}</p>
@@ -197,6 +167,17 @@ export default function EvidenceCheckerPage() {
                       <div key={entry.timestamp} className={styles.logItem}>
                         <div className={styles.logTexts}>
                           <span style={{ fontWeight: 700 }}>{entry.title}</span>
+                          <div className={styles.logMeta}>
+                            <span className={styles.pasalTag}>{entry.pasal}</span>
+                            <a
+                              className={styles.citationLink}
+                              href={entry.citationUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              Tautan RKUHAP
+                            </a>
+                          </div>
                           <span style={{ color: '#475569' }}>{entry.basis}</span>
                         </div>
                         <span

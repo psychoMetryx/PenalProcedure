@@ -31,6 +31,10 @@
   gap: 0.75rem;
 }
 
+.helperText {
+  color: #475569;
+}
+
 .draggableCard {
   background: #fff;
   border: 1px dashed #cbd5e1;
@@ -58,6 +62,33 @@
   margin-bottom: 0.35rem;
   color: #334155;
   font-weight: 700;
+}
+
+.pasalRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 0.2rem 0 0.35rem;
+}
+
+.pasalTag {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  font-weight: 700;
+  border: 1px solid #e2e8f0;
+}
+
+.citationLink {
+  color: #0ea5e9;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.citationLink:hover {
+  text-decoration: underline;
 }
 
 .evidenceType {
@@ -154,6 +185,13 @@
 .logTexts {
   display: grid;
   gap: 0.2rem;
+}
+
+.logMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .dropHint {
