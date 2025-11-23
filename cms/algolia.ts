@@ -40,7 +40,7 @@ export async function sendRecordsToAlgolia(records: AlgoliaRecord[]): Promise<vo
     },
     body: JSON.stringify({
       requests: records.map((record) => ({
-        action: 'replace',
+        action: 'addObject',
         body: record
       }))
     })
