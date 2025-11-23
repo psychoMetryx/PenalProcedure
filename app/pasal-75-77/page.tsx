@@ -40,19 +40,19 @@ export default function Pasal7577CheckPage() {
   const findings = useMemo(() => {
     const notes: string[] = [];
     if (answers.warrant === 'no') {
-      notes.push('Tindakan tanpa surat perintah atau tidak diperlihatkan (indikasi Pasal 77 KUHAP).');
+      notes.push('Tindakan tanpa surat perintah atau tidak diperlihatkan (indikasi pelanggaran Pasal 149 RKUHAP).');
     }
     if (answers.detentionLimit === 'over24') {
-      notes.push('Penangkapan/penahanan melewati batas waktu 1x24 jam tanpa penetapan hakim.');
+      notes.push('Penangkapan/penahanan melewati batas waktu 1x24 jam tanpa penetapan hakim (dapat dipersoalkan di praperadilan).');
     }
     if (answers.caseStopped === 'yes') {
-      notes.push('Perkara dihentikan tanpa dasar jelas (SP3) → dapat dimohonkan praperadilan.');
+      notes.push('Perkara dihentikan tanpa dasar jelas (penghentian penyidikan/penuntutan) → dapat dimohonkan praperadilan Pasal 149-153.');
     }
     if (answers.counselDenied === 'yes') {
-      notes.push('Akses penasihat hukum ditolak/dibatasi, melanggar hak tersangka/terdakwa (Pasal 54 KUHAP).');
+      notes.push('Akses penasihat hukum ditolak/dibatasi, melanggar hak tersangka/terdakwa dalam RKUHAP.');
     }
     if (answers.harm === 'yes') {
-      notes.push('Ada kerugian materiil/immateriil akibat tindakan tidak sah → dasar Pasal 75 KUHAP.');
+      notes.push('Ada kerugian materiil/immateriil akibat tindakan tidak sah → dasar ganti kerugian & rehabilitasi (Pasal 149-153 RKUHAP dan ketentuan kompensasi).');
     }
     return notes;
   }, [answers]);
@@ -61,7 +61,10 @@ export default function Pasal7577CheckPage() {
     () =>
       findings.some(
         (note) =>
-          note.toLowerCase().includes('pasal 77') || note.toLowerCase().includes('praperadilan') || note.includes('batas waktu')
+          note.toLowerCase().includes('pasal 149') ||
+          note.toLowerCase().includes('pasal 153') ||
+          note.toLowerCase().includes('praperadilan') ||
+          note.includes('batas waktu')
       ),
     [findings]
   );
@@ -96,16 +99,26 @@ export default function Pasal7577CheckPage() {
 
   return (
     <div>
-      <p className="badge">Pasal 75/77 Check</p>
-      <h1>Cek Cepat: Praperadilan & Ganti Kerugian</h1>
+      <p className="badge">RKUHAP Check</p>
+      <h1>Cek Cepat: Praperadilan & Ganti Kerugian (RKUHAP)</h1>
       <p style={{ color: '#475569', maxWidth: '820px', marginTop: '0.4rem' }}>
-        Jawab beberapa pertanyaan singkat untuk melihat apakah Anda dapat menggunakan Pasal 75 (ganti kerugian/rehabilitasi) atau
-        Pasal 77 (praperadilan). Hasil bukan nasihat hukum, tetapi membantu menyiapkan langkah awal.
+        Jawab beberapa pertanyaan singkat untuk melihat apakah Anda dapat menggunakan Pasal 149-153 RKUHAP tentang praperadilan,
+        ganti kerugian, dan rehabilitasi. Hasil bukan nasihat hukum, tetapi membantu menyiapkan langkah awal.
       </p>
       <div style={{ marginTop: '0.75rem' }}>
         <Link href="/restorative-justice" style={{ color: '#0ea5e9', fontWeight: 600 }}>
-          Butuh cek Keadilan Restoratif (Pasal 75)? Buka kalkulator cepat →
+          Butuh cek Keadilan Restoratif (Pasal 74-75 RKUHAP)? Buka kalkulator cepat →
         </Link>
+      </div>
+
+      <div className="card" style={{ marginTop: '1rem' }}>
+        <p className="badge">Pasal 74-75 RKUHAP</p>
+        <h2>Keadilan Restoratif</h2>
+        <p style={{ color: '#475569', marginBottom: 0 }}>
+          Pasal 74-75 RKUHAP mengatur penyelesaian perkara dengan pendekatan keadilan restoratif sebelum penuntutan. Proses ini
+          berbeda dari praperadilan/kompensasi sehingga jika fokus Anda adalah pemulihan melalui mediasi, gunakan kalkulator di
+          tautan di atas agar tidak tercampur dengan permohonan Pasal 149-153.
+        </p>
       </div>
 
       <section style={{ marginTop: '1.5rem' }}>
@@ -197,7 +210,7 @@ export default function Pasal7577CheckPage() {
                 }}
                 onClick={() => handleAnswer('caseStopped', 'yes')}
               >
-                Ya, ada SP3 atau pemberitahuan penghentian yang tidak jelas
+                Ya, ada penghentian penyidikan/penuntutan yang tidak jelas
               </button>
               <button
                 type="button"
@@ -272,8 +285,8 @@ export default function Pasal7577CheckPage() {
         <h2>Hasil kelayakan</h2>
         <div className="card" style={{ display: 'grid', gap: '0.5rem' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-            {statusChip('Praperadilan (Pasal 77)', eligibleForPretrial, 'warn')}
-            {statusChip('Ganti kerugian/rehabilitasi (Pasal 75)', eligibleForCompensation, 'warn')}
+            {statusChip('Praperadilan (Pasal 149-153 RKUHAP)', eligibleForPretrial, 'warn')}
+            {statusChip('Ganti kerugian & rehabilitasi (kompensasi RKUHAP)', eligibleForCompensation, 'warn')}
           </div>
           {findings.length > 0 ? (
             <ul style={{ margin: 0, paddingLeft: '1.1rem', lineHeight: 1.6 }}>
@@ -289,10 +302,10 @@ export default function Pasal7577CheckPage() {
           )}
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
             <Link href="/templates/pasal-77-praperadilan-template.txt" target="_blank" style={{ color: '#0ea5e9' }}>
-              Buka template permohonan praperadilan →
+              Buka template permohonan praperadilan (sesuaikan ke Pasal 149-153 RKUHAP) →
             </Link>
             <Link href="/templates/pasal-75-ganti-kerugian-template.txt" target="_blank" style={{ color: '#0ea5e9' }}>
-              Buka template ganti kerugian & rehabilitasi →
+              Buka template ganti kerugian & rehabilitasi (sesuaikan ke RKUHAP) →
             </Link>
             <button
               type="button"
@@ -318,7 +331,7 @@ export default function Pasal7577CheckPage() {
             <h3>Siapkan bukti & kronologi</h3>
             <p style={{ color: '#475569' }}>
               Kumpulkan surat perintah, berita acara, identitas petugas, dan bukti kerugian. Bukti ini diperlukan untuk permohonan
-              Pasal 75/77.
+              praperadilan atau kompensasi sesuai RKUHAP.
             </p>
           </div>
           <div className="card">
