@@ -23,6 +23,7 @@ type SearchHit = {
 type SearchResponse = {
   hits: SearchHit[];
   error?: string;
+  unavailable?: boolean;
 };
 
 const typeLabels: Record<ContentType, string> = {
@@ -85,16 +86,29 @@ function buildDescription(hit: SearchHit) {
 }
 
 export function SearchSection() {
+  const isAlgoliaConfigured = Boolean(
+    (process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || process.env.ALGOLIA_APP_ID) &&
+      (process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || process.env.ALGOLIA_SEARCH_API_KEY) &&
+      (process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || process.env.ALGOLIA_INDEX_NAME)
+  );
+
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchHit[]>([]);
-  const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'error'>(isAlgoliaConfigured ? 'idle' : 'error');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
+  const [isUnavailable, setIsUnavailable] = useState(!isAlgoliaConfigured);
 
   const handleSearch = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const trimmedQuery = query.trim();
     setHasSearched(true);
+
+    if (isUnavailable) {
+      setErrorMessage('Pencarian tidak tersedia saat ini.');
+      setStatus('error');
+      return;
+    }
 
     if (!trimmedQuery) {
       setResults([]);
@@ -113,6 +127,14 @@ export function SearchSection() {
 
       const data: SearchResponse = await response.json();
 
+      if (data.unavailable) {
+        setIsUnavailable(true);
+        setStatus('error');
+        setResults([]);
+        setErrorMessage('Pencarian tidak tersedia saat ini.');
+        return;
+      }
+
       if (!response.ok) {
         throw new Error(data.error || 'Gagal memuat hasil pencarian.');
       }
@@ -127,12 +149,13 @@ export function SearchSection() {
   };
 
   const statusMessage = useMemo(() => {
+    if (isUnavailable) return 'Pencarian tidak tersedia karena konfigurasi Algolia belum lengkap.';
     if (status === 'loading') return 'Mencari di indeks Algolia…';
     if (status === 'error') return errorMessage || 'Terjadi kesalahan saat memproses pencarian.';
     if (!hasSearched) return 'Cari tahapan perkara, hak, istilah hukum, atau template surat.';
     if (hasSearched && results.length === 0) return 'Tidak ada hasil untuk kata kunci tersebut.';
     return null;
-  }, [errorMessage, hasSearched, results.length, status]);
+  }, [errorMessage, hasSearched, isUnavailable, results.length, status]);
 
   return (
     <section className={styles.wrapper} aria-labelledby="search-heading">
@@ -162,9 +185,15 @@ export function SearchSection() {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               aria-required="false"
+              disabled={isUnavailable}
               aria-label="Cari jalur perkara, hak, atau template"
             />
-            <button type="submit" disabled={status === 'loading'} aria-label="Cari di indeks Algolia">
+            <button
+              type="submit"
+              disabled={isUnavailable || status === 'loading'}
+              aria-label="Cari di indeks Algolia"
+              aria-disabled={isUnavailable || status === 'loading'}
+            >
               {status === 'loading' ? 'Mencari…' : 'Cari'}
             </button>
           </div>
@@ -173,7 +202,7 @@ export function SearchSection() {
         {statusMessage && (
           <div
             className={styles.status}
-            role={status === 'error' ? 'alert' : 'status'}
+            role={status === 'error' || isUnavailable ? 'alert' : 'status'}
             aria-live="polite"
           >
             {statusMessage}
