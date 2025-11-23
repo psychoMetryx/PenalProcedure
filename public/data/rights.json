@@ -1,0 +1,65 @@
+[
+  {
+    "_id": "right-suspect-lawyer",
+    "title": "Didampingi Pengacara",
+    "audience": "suspect",
+    "description": "Berhak didampingi penasihat hukum sejak penyidikan dan tidak boleh ditolak oleh penyidik.",
+    "sources": ["Pasal 54", "Pasal 55"]
+  },
+  {
+    "_id": "right-suspect-silence",
+    "title": "Tidak Memberi Keterangan Memberatkan",
+    "audience": "suspect",
+    "description": "Anda boleh menolak menjawab pertanyaan yang bisa memberatkan diri sendiri dan mencatat keberatan dalam BAP.",
+    "sources": ["Pasal 66"]
+  },
+  {
+    "_id": "right-suspect-family-call",
+    "title": "Menghubungi Keluarga",
+    "audience": "suspect",
+    "description": "Berhak melakukan setidaknya satu panggilan telepon untuk memberi tahu keluarga atau penasihat hukum tentang penangkapan.",
+    "sources": ["Pasal 60"]
+  },
+  {
+    "_id": "right-victim-updates",
+    "title": "Mendapat Pembaruan Perkara",
+    "audience": "victim",
+    "description": "Korban berhak mengetahui perkembangan penyidikan dan penuntutan terhadap laporannya.",
+    "sources": ["Pasal 98"]
+  },
+  {
+    "_id": "right-victim-protection",
+    "title": "Perlindungan dari Intimidasi",
+    "audience": "victim",
+    "description": "Meminta perlindungan ketika mendapat ancaman terkait laporan atau kesaksiannya.",
+    "sources": ["Pasal 99"]
+  },
+  {
+    "_id": "right-witness-protection",
+    "title": "Perlindungan Saksi",
+    "audience": "witness",
+    "description": "Saksi dapat meminta identitas dirahasiakan serta pendampingan keamanan ketika diminta hadir.",
+    "sources": ["Pasal 159"]
+  },
+  {
+    "_id": "right-witness-compensation",
+    "title": "Penggantian Biaya Transport",
+    "audience": "witness",
+    "description": "Berhak atas penggantian biaya transportasi dan akomodasi saat hadir memenuhi panggilan.",
+    "sources": ["Pasal 160"]
+  },
+  {
+    "_id": "right-vulnerable-interpreter",
+    "title": "Pendampingan Khusus",
+    "audience": "vulnerable",
+    "description": "Penyandang disabilitas, anak, atau lansia berhak atas penerjemah, pendamping psikologis, atau fasilitas aksesibel.",
+    "sources": ["Pasal 137", "Pasal 139"]
+  },
+  {
+    "_id": "right-vulnerable-general",
+    "title": "Hak Dasar Proses Adil",
+    "audience": "general",
+    "description": "Setiap orang berhak diperlakukan manusiawi, bebas dari penyiksaan, dan mendapatkan pemeriksaan yang objektif.",
+    "sources": ["Pasal 8"]
+  }
+]
