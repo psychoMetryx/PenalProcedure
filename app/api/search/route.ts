@@ -20,14 +20,13 @@ type AlgoliaResponse = {
 };
 
 const appId = process.env.ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
-const searchApiKey = process.env.ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;
+const searchApiKey =
+  process.env.ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;
 const indexName =
   process.env.ALGOLIA_INDEX_NAME || process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || 'pahamkuhap-content';
 
 export async function POST(request: Request) {
-  const hasAlgoliaConfig = Boolean(appId && searchApiKey);
-
-  if (!hasAlgoliaConfig) {
+  if (!appId || !searchApiKey) {
     return NextResponse.json(
       {
         error: 'Konfigurasi Algolia tidak lengkap. Tambahkan kredensial di environment.',
@@ -58,7 +57,7 @@ export async function POST(request: Request) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Algolia-API-Key': searchApiKey!,
+        'X-Algolia-API-Key': searchApiKey,
         'X-Algolia-Application-Id': appId
       },
       body: JSON.stringify({ query, hitsPerPage: 12 })
