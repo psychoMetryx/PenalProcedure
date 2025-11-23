@@ -1,0 +1,32 @@
+[Tempat], [Tanggal]
+
+Kepada Yth.
+Ketua Pengadilan Negeri [Nama PN]
+Di - [Kota]
+
+Perihal: Permohonan Ganti Kerugian & Rehabilitasi (Pasal 75 KUHAP)
+
+Saya yang bertanda tangan di bawah ini:
+Nama      : [Nama Pemohon]
+Alamat    : [Alamat Pemohon]
+Pekerjaan : [Pekerjaan]
+
+Mengajukan permohonan ganti kerugian dan/atau rehabilitasi atas tindakan [penangkapan/penahanan/penggeledahan/penyitaan] tanggal [tanggal kejadian] yang dinyatakan tidak sah atau dihentikan tanpa dasar yang cukup.
+
+Kerugian yang dialami:
+- [Uraikan kerugian: kehilangan penghasilan, cedera fisik/psikis, kerusakan barang, biaya pengobatan/pemulihan]
+
+Permohonan:
+1. Menetapkan tindakan yang merugikan tersebut tidak sah dan memerintahkan ganti kerugian sebesar Rp[angka].
+2. Memerintahkan rehabilitasi nama baik (bila ada pencemaran/publikasi penangkapan).
+3. Membebankan biaya perkara menurut hukum.
+
+Alasan permohonan:
+- [Tuliskan alasan: tanpa surat perintah, melewati batas waktu, penghentian perkara tanpa alasan hukum, dll.]
+
+Bukti pendukung:
+- [Daftar bukti kerugian, kwitansi, surat keterangan dokter, saksi]
+
+Hormat saya,
+
+[tanda tangan dan nama terang]

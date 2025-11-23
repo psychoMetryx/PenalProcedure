@@ -1,0 +1,31 @@
+[Tempat], [Tanggal]
+
+Kepada Yth.
+Ketua Pengadilan Negeri [Nama PN]
+Di - [Kota]
+
+Perihal: Permohonan Praperadilan (Pasal 77 KUHAP)
+
+Saya yang bertanda tangan di bawah ini:
+Nama      : [Nama Pemohon]
+Alamat    : [Alamat Pemohon]
+Pekerjaan : [Pekerjaan]
+
+Dengan ini mengajukan permohonan praperadilan terhadap tindakan [penangkapan/penahanan/penggeledahan/penyitaan] oleh [instansi] pada [tanggal] yang kami nilai tidak sah karena [alasan pelanggaran].
+
+Hal yang dimohonkan:
+1. Menyatakan tindakan [penangkapan/penahanan/penggeledahan/penyitaan] tidak sah menurut hukum.
+2. Memerintahkan penghentian penahanan dan/atau pengembalian barang yang disita.
+3. Membebankan biaya perkara menurut hukum.
+
+Alasan permohonan:
+- [Tuliskan kronologi singkat dan pelanggaran prosedur, mis. tanpa surat perintah, melebihi batas waktu 1x24 jam, penolakan akses penasihat hukum]
+
+Bukti awal:
+- [Daftar bukti, saksi, salinan surat]
+
+Demikian permohonan ini disampaikan. Atas perhatian Ketua Pengadilan Negeri, diucapkan terima kasih.
+
+Hormat saya,
+
+[tanda tangan dan nama terang]
