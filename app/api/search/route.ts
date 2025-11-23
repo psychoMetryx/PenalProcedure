@@ -23,10 +23,16 @@ const { ALGOLIA_APP_ID, ALGOLIA_SEARCH_API_KEY, ALGOLIA_INDEX_NAME } = process.e
 const indexName = ALGOLIA_INDEX_NAME || 'pahamkuhap-content';
 
 export async function POST(request: Request) {
-  if (!ALGOLIA_APP_ID || !ALGOLIA_SEARCH_API_KEY) {
+  const hasAlgoliaConfig = Boolean(ALGOLIA_APP_ID && ALGOLIA_SEARCH_API_KEY);
+
+  if (!hasAlgoliaConfig) {
     return NextResponse.json(
-      { error: 'Konfigurasi Algolia tidak lengkap. Tambahkan kredensial di environment.' },
-      { status: 500 }
+      {
+        error: 'Konfigurasi Algolia tidak lengkap. Tambahkan kredensial di environment.',
+        hits: [],
+        unavailable: true
+      },
+      { status: 503 }
     );
   }
 
