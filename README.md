@@ -126,3 +126,20 @@ To give the site credibility, you could partner with:
 *   ICJR (Institute for Criminal Justice Reform).
 
 Would you like me to write the code for one of these specific components (like the Restorative Justice Calculator logic or the Landing Page structure)?
+
+## Headless CMS & Content Models
+- The project is wired for **Sanity** as the headless CMS. Set `SANITY_PROJECT_ID`, `SANITY_DATASET`, `SANITY_API_VERSION`, and `SANITY_READ_TOKEN` in `.env` or deployment settings.
+- GROQ queries for Jalur Perkara stages, rights, glossary entries, and document templates live in `cms/queries.ts`.
+- Sanity schema blueprints are in `cms/schemas/`. Deploy them to your Sanity studio to create the matching content models.
+
+## Algolia Search Indexing
+- Configure Algolia credentials (`ALGOLIA_APP_ID`, `ALGOLIA_ADMIN_API_KEY`, `ALGOLIA_SEARCH_API_KEY`, `ALGOLIA_INDEX_NAME`) in the environment.
+- Run `npm run index:content` to fetch CMS content and push it to Algolia. The script batches stages, rights, glossary terms, and document templates into a single index.
+- The command uses `ts-node` via `npx`, so it will download the runtime automatically if it is not already installed locally.
+
+## Deployment (Vercel / Netlify)
+- **Build command:** `npm run build`
+- **Output directory:** `.next`
+- **Environment variables:** set all CMS and Algolia keys above, plus `NEXT_PUBLIC_SITE_URL`.
+- **Vercel:** add the variables via Project Settings → Environment Variables. For preview branches, use a distinct Algolia index name to avoid overwriting production records.
+- **Netlify:** configure the same variables in Site settings → Build & deploy → Environment. Keep the build command and publish directory aligned with the values above.
