@@ -102,6 +102,11 @@ export default function Pasal7577CheckPage() {
         Jawab beberapa pertanyaan singkat untuk melihat apakah Anda dapat menggunakan Pasal 75 (ganti kerugian/rehabilitasi) atau
         Pasal 77 (praperadilan). Hasil bukan nasihat hukum, tetapi membantu menyiapkan langkah awal.
       </p>
+      <div style={{ marginTop: '0.75rem' }}>
+        <Link href="/restorative-justice" style={{ color: '#0ea5e9', fontWeight: 600 }}>
+          Butuh cek Keadilan Restoratif (Pasal 75)? Buka kalkulator cepat →
+        </Link>
+      </div>
 
       <section style={{ marginTop: '1.5rem' }}>
         <h2>Pertanyaan utama</h2>

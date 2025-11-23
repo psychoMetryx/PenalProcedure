@@ -23,6 +23,11 @@ const quickLinks = [
     href: '/pasal-75-77'
   },
   {
+    title: 'Kalkulator Keadilan Restoratif',
+    description: 'Cek syarat Pasal 75: pelaku pertama kali, bukan tindak pidana dikecualikan, dan restitusi korban.',
+    href: '/restorative-justice'
+  },
+  {
     title: 'Hak Saksi & Rentan',
     description: 'Perlindungan saksi, juru bahasa, akomodasi disabilitas, dan kelompok rentan.',
     href: '/know-your-rights#witness'
