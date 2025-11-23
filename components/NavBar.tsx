@@ -8,6 +8,7 @@ const links = [
   { href: '/', label: 'Beranda' },
   { href: '/jalur-perkara', label: 'Jalur Perkara' },
   { href: '/know-your-rights', label: 'Kenali Hak Anda' },
+  { href: '/virtual-lawyer', label: 'Virtual Lawyer' },
   { href: '/comparator', label: 'RUU vs KUHAP Lama' }
 ];
 

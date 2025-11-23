@@ -26,6 +26,11 @@ const quickLinks = [
     title: 'Pembanding RUU KUHAP',
     description: 'Bandingkan aturan lama dengan draf baru untuk topik penting.',
     href: '/comparator'
+  },
+  {
+    title: 'Diagram Virtual Lawyer',
+    description: 'Navigasi visual hak dan langkah utama tanpa perlu chat.',
+    href: '/virtual-lawyer'
   }
 ];
 

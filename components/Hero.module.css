@@ -48,6 +48,7 @@
 .victim { background: linear-gradient(135deg, #fde68a, #fef9c3); }
 .suspect { background: linear-gradient(135deg, #bfdbfe, #dbeafe); }
 .witness { background: linear-gradient(135deg, #bbf7d0, #dcfce7); }
+.diagram { background: linear-gradient(135deg, #c7d2fe, #e0f2fe); }
 
 .secondaryLinks {
   display: flex;

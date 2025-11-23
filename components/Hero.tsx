@@ -21,6 +21,9 @@ export function Hero() {
           <Link href="/know-your-rights#witness" className={styles.witness}>
             Saya Saksi
           </Link>
+          <Link href="/virtual-lawyer" className={styles.diagram}>
+            Buka Diagram Virtual Lawyer
+          </Link>
         </div>
         <div className={styles.secondaryLinks}>
           <Link href="/jalur-perkara">Lihat Jalur Perkara</Link>
