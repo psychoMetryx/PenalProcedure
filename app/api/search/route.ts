@@ -19,6 +19,8 @@ type AlgoliaResponse = {
   hits: AlgoliaHit[];
 };
 
+const isSearchEnabled =
+  process.env.SEARCH_ENABLED === 'true' || process.env.NEXT_PUBLIC_SEARCH_ENABLED === 'true';
 const appId = process.env.ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
 const searchApiKey =
   process.env.ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;
@@ -26,6 +28,10 @@ const indexName =
   process.env.ALGOLIA_INDEX_NAME || process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || 'pahamkuhap-content';
 
 export async function POST(request: Request) {
+  if (!isSearchEnabled) {
+    return NextResponse.json({ error: 'Pencarian dinonaktifkan.', hits: [] }, { status: 410 });
+  }
+
   if (!appId || !searchApiKey) {
     return NextResponse.json(
       {
