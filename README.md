@@ -91,7 +91,6 @@ A slider tool where users can see "How it was before" vs. "How it is in the New 
 
 *   **Frontend:** Next.js or React (for snappy interaction).
 *   **Content Management:** Sanity.io or Strapi (Headless CMS) so legal experts can update content without coding.
-*   **Search:** Algolia (for fast, typo-tolerant searching of legal terms).
 *   **Hosting:** Vercel or Netlify (Fast delivery in SE Asia).
 
 ---
@@ -132,14 +131,9 @@ Would you like me to write the code for one of these specific components (like t
 - GROQ queries for Jalur Perkara stages, rights, glossary entries, and document templates live in `cms/queries.ts`.
 - Sanity schema blueprints are in `cms/schemas/`. Deploy them to your Sanity studio to create the matching content models.
 
-## Algolia Search Indexing
-- Configure Algolia credentials (`ALGOLIA_APP_ID`, `ALGOLIA_ADMIN_API_KEY`, `ALGOLIA_SEARCH_API_KEY`, `ALGOLIA_INDEX_NAME`) in the environment.
-- Run `npm run index:content` to fetch CMS content and push it to Algolia. The script batches stages, rights, glossary terms, and document templates into a single index.
-- The command uses `ts-node` via `npx`, so it will download the runtime automatically if it is not already installed locally.
-
 ## Deployment (Vercel / Netlify)
 - **Build command:** `npm run build`
 - **Output directory:** `.next`
-- **Environment variables:** set all CMS and Algolia keys above, plus `NEXT_PUBLIC_SITE_URL`.
-- **Vercel:** add the variables via Project Settings → Environment Variables. For preview branches, use a distinct Algolia index name to avoid overwriting production records.
+- **Environment variables:** set the CMS keys above plus `NEXT_PUBLIC_SITE_URL`.
+- **Vercel:** add the variables via Project Settings → Environment Variables.
 - **Netlify:** configure the same variables in Site settings → Build & deploy → Environment. Keep the build command and publish directory aligned with the values above.
